@@ -15,14 +15,15 @@ namespace AssassinProject
             setUp.Drive();
 
                                                                 /*TODO:
-                                                                 *  set up classes
                                                                  *  read in text file to make list
                                                                  *  randomize list
                                                                  *  allow kills
                                                                  *  winner determined
-                                                                 *  */
+                                                                 *  allow removals
+                                                                 *  allow adding to the list while it is rung
+                                                                 *  *  */
 
-            Console.WriteLine("done.");
+            Console.WriteLine("\ndone.");
             Console.ReadLine();
         }
     }

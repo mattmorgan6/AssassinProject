@@ -15,7 +15,11 @@ namespace AssassinProject
             StudentList studentList = new StudentList("Byron");
             studentList.Add("Nathan");
 
-            Console.WriteLine("\n" + studentList.ToString());
+
+            studentList.LinkTailToHead();
+
+
+            Console.WriteLine(studentList.ToString());
 
         }
 
