@@ -12,8 +12,10 @@ namespace AssassinProject
 
             //file IO:  https://support.microsoft.com/en-us/help/304430/how-to-do-basic-file-i-o-in-visual-c
 
+            StudentList studentList = new StudentList("Byron");
+            studentList.Add("Nathan");
 
-
+            Console.WriteLine("\n" + studentList.ToString());
 
         }
 
