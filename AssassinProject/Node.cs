@@ -8,7 +8,7 @@ namespace AssassinProject
     {
         public string name;
         public Node next;
-
+        
         public Node(string name)
         {
             this.name = name;
