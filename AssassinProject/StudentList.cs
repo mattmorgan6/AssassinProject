@@ -150,7 +150,7 @@ namespace AssassinProject
 
         public string Add(string name)    //adds a new person to the end of the linked list
         {
-            if(Contains(name))
+            if(!Contains(name))
             {
                 Node n = new Node(name);
 

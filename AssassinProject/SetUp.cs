@@ -22,8 +22,7 @@ namespace AssassinProject
             for (int i = 0; i < originalNames.Count; i++)
             {
                 studentList.Add(originalNames[i]);          //adds the names from file to the linked list
-            }
-            
+            } 
         }
 
 
