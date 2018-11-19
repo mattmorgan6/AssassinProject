@@ -11,13 +11,10 @@ namespace AssassinProject
 
             SetUp setUp = new SetUp();
             setUp.Drive();
-            setUp.Guid();
-
+            setUp.Gui();
 
             
                                                                 /*TODO:
-                                                                 *  winner determined
-                                                                 *  graveyard
                                                                  *  ignore capitalization?
                                                                  *  *  */
 

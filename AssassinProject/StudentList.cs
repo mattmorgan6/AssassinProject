@@ -35,7 +35,7 @@ namespace AssassinProject
 
 
 
-        public void Remove(String nameR)
+        public String Remove(String nameR)
         {
             if(Contains(nameR))
             {
@@ -61,18 +61,34 @@ namespace AssassinProject
                 }
 
                 LinkTailToHead();
+
+                CheckForWinner();
+
+                return nameR;
             }
             else
             {
-                Console.WriteLine("That person is not in the game");
+                return "notIncluded";
+            }
+
+        }
+       
+        public void CheckForWinner()        //checks if there is only one person left alive
+        {
+            if(size == 1)
+            {
+                string winner = "";
+                winner = list.name;
+                Console.WriteLine("\n\n\nThe winner is {0}\n" +
+                    "-----------------------------------------------------------------------------" +
+                    "\n\n\n", winner);
             }
         }
-
-        
-
+ 
 
 
-        public void Randomize()     //TBD if I have time
+
+        public void Randomize()
         {
             int tempSize = size;
 
@@ -84,7 +100,6 @@ namespace AssassinProject
             {
                 int place = rnd.Next(0, size - 1);  //gets the index to move to.
 
-
                 current = current.next;
             }
 
@@ -92,7 +107,7 @@ namespace AssassinProject
 
         }
 
-        public void Swap(int index1, int index2)        //TBD if i have time
+        public void Swap(int index1, int index2)       
         {
             Node t1 = list;
 
@@ -120,7 +135,7 @@ namespace AssassinProject
 
 
 
-        public void LinkTailToHead()
+        public void LinkTailToHead()     //so that the last person has somebody to kill
         {
             Node current = list;
             for (int i = 0; i < size-1; i++)
@@ -133,42 +148,55 @@ namespace AssassinProject
 
 
 
-        public void Add(string name)
+        public string Add(string name)    //adds a new person to the end of the linked list
         {
-            Node n = new Node(name);
+            if(Contains(name))
+            {
+                Node n = new Node(name);
 
-            if (list == null) {
-                list = n;
+                if (list == null)
+                {
+                    list = n;
+                }
+                else
+                {
+                    Node current = list;
+                    for (int i = 0; i < size - 1; i++)
+                    {
+                        current = current.next;
+                    }
+                    current.next = n;
+                }
+
+                size++;
+                LinkTailToHead();
+
+                return "success";
             }
             else
             {
-                Node current = list;
-                for (int i = 0; i < size-1; i++)
-                {
-                    current = current.next;
-                }
-                current.next = n;
+                return "alreadyIn";
             }
-
-            size++;
-            LinkTailToHead();
         }
 
     
 
         override
-        public string ToString()
+        public string ToString()        //returns a string of every name in the linked list ex. Bob, Joe
         {
             string r = "";
 
-            Node current = list;
-            for (int i = 0; i < size-1; i++)
+            if(list != null)
             {
+                Node current = list;
+                for (int i = 0; i < size - 1; i++)
+                {
+                    r += current.name;
+                    r += ", ";
+                    current = current.next;
+                }
                 r += current.name;
-                r += ", ";
-                current = current.next;
             }
-            r += current.name;
 
             return r;
         }
@@ -178,8 +206,8 @@ namespace AssassinProject
             return size;
         }
 
-        public bool Contains(string nameR)
-        {
+        public bool Contains(string nameR)          //checks if the name is already in the list.
+        {                                           //useful for removing/adding repetative items
             Boolean r = false;
             Node current = list;
             for (int i = 0; i < size; i++)
