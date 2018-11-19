@@ -46,13 +46,13 @@ namespace AssassinProject
         }
 
 
-        public void guid()
+        public void Guid()
         {
             
             string response = "";
             do
             {
-                Console.WriteLine("\nadd, kill, or print?");
+                Console.WriteLine("\nfind (assignment), add, kill, or print?");
                 response = Console.ReadLine();
 
                 if (response.Equals("add"))
@@ -78,6 +78,12 @@ namespace AssassinProject
                     Console.WriteLine("Enter the victim's name");
                     String name = Console.ReadLine();
                     Console.WriteLine(studentList.Contains(name));
+                }
+                else if (response.Equals("find"))
+                {
+                    Console.WriteLine("Enter the victim's name");
+                    String name = Console.ReadLine();
+                    Console.WriteLine("{0} is {1}'s assignment", studentList.GetAssignment(name), name);
                 }
 
 

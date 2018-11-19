@@ -37,27 +37,35 @@ namespace AssassinProject
 
         public void Remove(String nameR)
         {
-            Node current = list;
-            if (list.name.Equals(nameR))
+            if(Contains(nameR))
             {
-                list = list.next;                
+
+                Node current = list;
+                if (list.name.Equals(nameR))
+                {
+                    list = list.next;
+                    size--;
+                }
+                else
+                {
+                    for (int i = 0; i < size; i++)
+                    {
+                        if (current.next.name.Equals(nameR))
+                        {
+                            current.next = current.next.next;   //removes it
+                            size--;
+                        }
+
+                        current = current.next;
+                    }
+                }
+
+                LinkTailToHead();
             }
             else
             {
-                for (int i = 0; i < size; i++)
-                {
-                    if (current.next.name.Equals(nameR))
-                    {
-                        current.next = current.next.next;   //removes it
-                    }
-
-                    current = current.next;
-                }
+                Console.WriteLine("That person is not in the game");
             }
-
-
-            size--;
-            LinkTailToHead();
         }
 
         
@@ -183,32 +191,9 @@ namespace AssassinProject
                 current = current.next;
             }
 
-            return true;
+            return r;
         }
 
 
-
-        /* public void SetSize()
-     {
-         if(list == null)
-         {
-             size = 0;
-             Console.WriteLine("nothing");
-         }
-         else
-         {
-             Node current = list;
-             string head = current.name;
-             int count = 0;
-             while (current != null && !current.name.Equals(head))
-             {
-                 count++;
-                 current = current.next;
-             }
-             size = count;
-
-         }
-
-     } */
     }
 }
